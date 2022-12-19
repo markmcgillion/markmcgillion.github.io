@@ -1,0 +1,70 @@
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@500&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@500&display=swap');
+
+        .coin {
+            width: 100vw;
+            height: 100vw;
+            border-radius: 100%;
+            background-color: #ccc;
+            transition: all 0.5s;
+            transform: rotateY(0deg);
+        }
+
+        .coin.heads {
+            background-image: url("back.png");
+            background-size: cover;
+        }
+
+        .coin.tails {
+            background-image: url("front.png");
+            background-size: cover;
+        }
+
+        .coin-spin {
+            transform: rotateY(1080deg);
+        }
+        h1{
+            font-size: 10vw;
+            text-align: center;
+            font-family: 'Martian Mono', monospace;
+            padding-top: 10vw;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Bull or Bollocks</h1>
+<div id="coin-container" class="coin-container">
+    <div id="coin" class="coin">
+    </div>
+</div>
+
+<script>
+
+    var coin = document.getElementById("coin");
+    var tossButton = document.getElementById("toss-button");
+    var headsCount = document.getElementById("heads-count");
+    var tailsCount = document.getElementById("tails-count");
+
+    coin.addEventListener("click", function() {
+        coin.classList.add("coin-spin");
+        setTimeout(function() {
+            var result = Math.random() < 0.5 ? "heads" : "tails";
+            coin.classList.remove("coin-spin", "heads", "tails");
+            coin.classList.add(result);
+        }, 500);
+    });
+
+    window.onload=function(){
+        coin.classList.add("coin-spin");
+        var result = Math.random() < 0.5 ? "heads" : "tails";
+        coin.classList.add(result);
+    };
+</script>
+</body>
+</html>
