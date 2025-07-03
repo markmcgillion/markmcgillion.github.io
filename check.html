@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Can Chris go to the Creek?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 60px;
+        }
+        .big {
+            font-size: 5em;
+            font-weight: bold;
+        }
+        .red {
+            color: #d32f2f;
+        }
+        .green {
+            color: #388e3c;
+        }
+        .days {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Can Chris go to the Creek?</h2>
+    <div id="result"></div>
+    <script>
+        const today = new Date();
+        const target = new Date('2025-08-10T00:00:00');
+        // Zero out time for today for accurate diff
+        today.setHours(0,0,0,0);
+        const msPerDay = 24 * 60 * 60 * 1000;
+        const diff = Math.ceil((target - today) / msPerDay);
+        const resultDiv = document.getElementById('result');
+        if (diff > 0) {
+            resultDiv.innerHTML = `<div class="big red">NO</div><div class="days">${diff} days to go..</div>`;
+        } else {
+            resultDiv.innerHTML = `<div class="big green">YES</div>`;
+        }
+    </script>
+</body>
+</html> 
